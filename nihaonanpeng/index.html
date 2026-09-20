@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="你好男朋友 - 专注恋爱心理与亲密关系指南，提供恋爱技巧、情感咨询、约会建议及情侣相处之道，帮助您建立健康、甜蜜的恋爱关系。">
+    <meta name="keywords" content="你好男朋友, 恋爱技巧, 情感咨询, 约会指南, 情侣相处, 恋爱心理">
+    <title>你好男朋友 - 恋爱心理与甜蜜关系指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #ff6b81;
+            --primary-hover: #ff4757;
+            --secondary-color: #2f3542;
+            --bg-color: #f1f2f6;
+            --card-bg: #ffffff;
+            --text-main: #2f3542;
+            --text-light: #747d8c;
+            --border-radius: 12px;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --spacing-unit: 1rem;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 40px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .btn-subscribe {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .btn-subscribe:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #fff0f1 0%, #ffffff 100%);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            color: var(--secondary-color);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .tag {
+            background-color: rgba(255, 107, 129, 0.1);
+            color: var(--primary-color);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Section Title */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e1e1e1;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 24px;
+            background-color: var(--primary-color);
+            border-radius: 3px;
+        }
+
+        .view-more {
+            color: var(--primary-color);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        /* Article Grid */
+        .article-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-img-wrapper {
+            height: 180px;
+            overflow: hidden;
+            background-color: #eee;
+        }
+
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .card:hover .card-img-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-meta {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            color: var(--secondary-color);
+        }
+
+        .card-excerpt {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .card-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #f1f1f1;
+        }
+
+        .author {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .author-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #ddd;
+        }
+
+        .author-name {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .read-time {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+
+        /* Interactive Advice Section */
+        .advice-section {
+            background-color: #fff;
+            padding: 50px 0;
+            margin-bottom: 60px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .advice-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .advice-item {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .advice-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 107, 129, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .advice-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .advice-item p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin-bottom: 60px;
+        }
+
+        .faq-item {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+        }
+
+        .faq-question:hover {
+            color: var(--primary-color);
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-light);
+            display: none;
+            border-top: 1px solid #f8f8f8;
+            padding-top: 15px;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary-color);
+        }
+
+        .faq-icon {
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: #dfe4ea;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h2 {
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            color: #a4b0be;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #a4b0be;
+            font-size: 0.9rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85rem;
+            color: #a4b0be;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Simplified for mobile */
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .advice-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-brand p {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="nav-container">
+        <a href="#" class="logo">
+            <span>你好</span>男朋友
+        </a>
+        <nav class="nav-links">
+            <a href="#" class="active">首页</a>
+            <a href="#">恋爱技巧</a>
+            <a href="#">情感咨询</a>
+            <a href="#">约会指南</a>
+            <a href="#">热门话题</a>
+        </nav>
+        <a href="#" class="btn-subscribe">订阅专栏</a>
+    </div>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>掌握恋爱主动权，成为更好的自己</h1>
+            <p>这里有最实用的恋爱心理学、沟通技巧和相处之道。无论是初次约会还是长期关系，我们为您提供专业的建议与支持。</p>
+            <div class="hero-tags">
+                <span class="tag">#沟通技巧</span>
+                <span class="tag">#情绪管理</span>
+                <span class="tag">#约会攻略</span>
+                <span class="tag">#挽回指南</span>
+                <span class="tag">#情感升温</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Featured Articles -->
+        <section class="content-section">
+            <div class="section-header">
+                <h2 class="section-title">热门精选</h2>
+                <a href="#" class="view-more">查看更多 →</a>
+            </div>
+            <div class="article-grid">
+                <!-- Article 1 -->
+                <article class="card">
+                    <div class="card-img-wrapper">
+                        <img src="https://picsum.photos/seed/love1/400/250" alt="沟通的艺术">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span>恋爱技巧</span>
+                            <span>5分钟前</span>
+                        </div>
+                        <h3 class="card-title">高情商沟通：如何优雅地表达你的需求？</h3>
+                        <p class="card-excerpt">很多男生在表达爱意时容易陷入误区，导致对方误解。学会“非暴力沟通”，让感情更顺畅。</p>
+                        <div class="card-footer">
+                            <div class="author">
+                                <div class="author-avatar"></div>
+                                <span class="author-name">情感导师</span>
+                            </div>
+                            <span class="read-time">4分钟阅读</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="card">
+                    <div class="card-img-wrapper">
+                        <img src="https://picsum.photos/seed/love2/400/250" alt="约会攻略">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span>约会指南</span>
+                            <span>1小时前</span>
+                        </div>
+                        <h3 class="card-title">第一次约会去哪里？这3个地点让好感度翻倍</h3>
+                        <p class="card-excerpt">选择合适的约会地点能极大缓解紧张感。从咖啡厅到互动性强的场所，我们为您盘点最佳选择。</p>
+                        <div class="card-footer">
+                            <div class="author">
+                                <div class="author-avatar"></div>
+                                <span class="author-name">恋爱顾问</span>
+                            </div>
+                            <span class="read-time">6分钟阅读</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="card">
+                    <div class="card-img-wrapper">
+                        <img src="https://picsum.photos/seed/love3/400/250" alt="情绪管理">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span>心理建设</span>
+                            <span>3小时前</span>
+                        </div>
+                        <h3 class="card-title">摆脱“舔狗”心态：建立平等健康的恋爱关系</h3>
+                        <p class="card-excerpt">爱不是卑微的讨好。真正的吸引力来源于自信和自我价值的实现，学会爱自己才能更好地爱别人。</p>
+                        <div class="card-footer">
+                            <div class="author">
+                                <div class="author-avatar"></div>
+                                <span class="author-name">心理医生</span>
+                            </div>
+                            <span class="read-time">8分钟阅读</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Core Advice Section -->
+        <section class="advice-section">
+            <div class="section-header">
+                <h2 class="section-title">核心相处之道</h2>
+            </div>
+            <div class="advice-grid">
+                <div class="advice-item">
+                    <div class="advice-icon">💬</div>
+                    <h3>有效倾听</h3>
+                    <p>不仅仅是听到声音，而是理解对方的情绪和需求，给予正向反馈。</p>
+                </div>
+                <div class="advice-item">
+                    <div class="advice-icon">🤝</div>
+                    <h3>保持独立</h3>
+                    <p>拥有自己的生活和社交圈，不要让爱情占据全部，保持神秘感。</p>
+                </div>
+                <div class="advice-item">
+                    <div class="advice-icon">❤️</div>
+                    <h3>真诚赞美</h3>
+                    <p>细节决定成败，学会发现并赞美伴侣的闪光点，建立正向循环。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest Articles -->
+        <section class="content-section">
+            <div class="section-header">
+                <h2 class="section-title">最新文章</h2>
+                <a href="#" class="view-more">查看更多 →</a>
+            </div>
+            <div class="article-grid">
+                <article class="card">
+                    <div class="card-img-wrapper">
+                        <img src="https://picsum.photos/seed/love4/400/250" alt="异地恋">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span>异地恋</span>
+                            <span>昨天</span>
+                        </div>
+                        <h3 class="card-title">异地恋如何维系？信任与视频通话是关键</h3>
+                        <p class="card-excerpt">距离产生美，但也容易产生猜忌。掌握沟通频率和相处节奏，让异地恋不再心酸。</p>
+                        <div class="card-footer">
+                            <div class="author">
+                                <div class="author-avatar"></div>
+                                <span class="author-name">情感观察员</span>
+                            </div>
+                            <span class="read-time">5分钟阅读</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-img-wrapper">
+                        <img src="https://picsum.photos/seed/love5/400/250" alt="争吵处理">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span>冲突处理</span>
+                            <span>2天前</span>
+                        </div>
+                        <h3 class="card-title">吵架不可怕，可怕的是“翻旧账”和冷暴力</h3>
+                        <p class="card-excerpt">争吵是了解彼此底线的契机。学会就事论事，避免情绪化攻击，才能越吵越亲密。</p>
+                        <div class="card-footer">
+                            <div class="author">
+                                <div class="author-avatar"></div>
+                                <span class="author-name">情感导师</span>
+                            </div>
+                            <span class="read-time">7分钟阅读</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-img-wrapper">
+                        <img src="https://picsum.photos/seed/love6/400/250" alt="礼物推荐">
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span>实用指南</span>
+                            <span>3天前</span>
+                        </div>
+                        <h3 class="card-title">送女友礼物不踩雷：这5类礼物永远不会出错</h3>
+                        <p class="card-excerpt">礼物代表的是心意和用心。避开华而不实的物品，选择能体现你观察力的礼物。</p>
+                        <div class="card-footer">
+                            <div class="author">
+                                <div class="author-avatar"></div>
+                                <span class="author-name">生活家</span>
+                            </div>
+                            <span class="read-time">4分钟阅读</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="section-header">
+                <h2 class="section-title">常见问题解答</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">如何判断她是否喜欢我？<span class="faq-icon">▼</span></div>
+                    <div class="faq-answer">通过眼神接触、主动分享生活点滴、愿意为你花时间以及肢体语言的开放度来判断。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">恋爱中总是患得患失怎么办？<span class="faq-icon">▼</span></div>
+                    <div class="faq-answer">这通常源于安全感缺失。建议先专注于自我提升，建立自信，同时尝试与伴侣进行深度沟通。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">异地恋多久见一次比较好？<span class="faq-icon">▼</span></div>
+                    <div class="faq-answer">没有固定标准，建议每周至少视频一次。如果条件允许，每1-2个月见一次面能维持关系的温度。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">如何打破“话题终结者”的尴尬？<span class="faq-icon">▼</span></div>
+                    <div class="faq-answer">多提问开放式问题，分享自己的趣事，并积极倾听对方的故事，不要急于给出建议。</div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h2>你好男朋友</h2>
+                <p>致力于为男性提供科学、实用的恋爱指导与情感支持，帮助每一位男士在爱情中自信前行。</p>
+            </div>
+            <div class="footer-col">
+                <h4>栏目导航</h4>
+                <ul>
+                    <li><a href="#">恋爱技巧</a></li>
+                    <li><a href="#">约会指南</a></li>
+                    <li><a href="#">情感咨询</a></li>
+                    <li><a href="#">热门榜单</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>帮助中心</h4>
+                <ul>
+                    <li><a href="#">关于我们</a></li>
+                    <li><a href="#">投稿指南</a></li>
+                    <li><a href="#">版权声明</a></li>
+                    <li><a href="#">联系合作</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>关注我们</h4>
+                <ul>
+                    <li><a href="#">微信公众号</a></li>
+                    <li><a href="#">新浪微博</a></li>
+                    <li><a href="#">知乎专栏</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 你好男朋友 版权所有. 保留所有权利。</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Simple FAQ Toggle Logic
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => {
+            const item = question.parentElement;
+            const isActive = item.classList.contains('active');
+            
+            // Close all items
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+            
+            // Open clicked item if it wasn't active
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+</script>
+
+</body>
+  </html>
