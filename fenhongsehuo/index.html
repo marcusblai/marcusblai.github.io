@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>粉红色火烈鸟-经典电影重温与艺术解读指南</title>
+    <meta name="description" content="粉红色火烈鸟专题页，深入解析约翰·沃特斯这部前卫邪典电影的创作背景、剧情梗概、艺术风格及其在流行文化中的深远影响。提供观看指南、幕后故事及影评分析。">
+    <meta name="keywords" content="粉红色火烈鸟, 约翰·沃特斯, 邪典电影, 前卫电影, 经典影评, 流行文化">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-pink: #ff69b4;
+            --dark-pink: #c71585;
+            --bg-cream: #fff0f5;
+            --bg-dark: #1a1a1a;
+            --text-main: #333;
+            --text-light: #f5f5f5;
+            --accent-red: #ff4500;
+            --font-serif: 'Georgia', 'Times New Roman', serif;
+            --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-cream);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            color: var(--dark-pink);
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-pink);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-pink);
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a:hover {
+            color: var(--primary-pink);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://picsum.photos/seed/flamingo_dark/1600/900') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-serif);
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .hero-content h1 span {
+            color: var(--primary-pink);
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-pink);
+            color: white;
+            border-radius: 50px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid var(--primary-pink);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--primary-pink);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 1rem;
+        }
+
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--bg-dark);
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 5rem 0;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+        }
+
+        .main-article {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .main-article h2 {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .main-article p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .highlight-box {
+            background-color: #fff0f5;
+            border-left: 5px solid var(--primary-pink);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+        }
+
+        /* Sidebar */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+            color: var(--dark-pink);
+        }
+
+        .list-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.8rem;
+        }
+
+        .list-item::before {
+            content: '•';
+            color: var(--primary-pink);
+            font-weight: bold;
+            font-size: 1.5rem;
+            line-height: 1;
+            margin-right: 0.5rem;
+        }
+
+        /* Movie Gallery */
+        .gallery-section {
+            background-color: white;
+            padding: 5rem 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .poster-card {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            aspect-ratio: 2/3;
+            cursor: pointer;
+        }
+
+        .poster-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .poster-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 1.5rem 1rem 1rem;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .poster-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .poster-card:hover .poster-overlay {
+            transform: translateY(0);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 5rem 0;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+        }
+
+        .faq-section .section-title {
+            color: var(--text-light);
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .faq-item {
+            background-color: rgba(255,255,255,0.05);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255,105,180,0.2);
+        }
+
+        .faq-item h4 {
+            color: var(--primary-pink);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            color: #888;
+            padding: 3rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .grid-layout {
+                grid-template-columns: 1fr;
+            }
+            nav ul {
+                display: none; /* Simplified for mobile */
+            }
+            .btn {
+                display: block;
+                width: 100%;
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo">FLAMINGO<span style="color:white">.MOVIE</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#intro">电影简介</a></li>
+                    <li><a href="#analysis">深度解读</a></li>
+                    <li><a href="#gallery">剧照赏析</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>粉红色火烈鸟 <span>Flamingo</span></h1>
+                <p>约翰·沃特斯执导的邪典经典，一部挑战道德底线与审美极限的荒诞艺术杰作。</p>
+                <div>
+                    <a href="#intro" class="btn">开始阅读</a>
+                    <a href="#gallery" class="btn btn-outline">查看剧照</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Intro & Analysis Section -->
+        <section id="intro" class="content-section">
+            <div class="container">
+                <h2 class="section-title">影史传奇</h2>
+                <div class="grid-layout">
+                    <article class="main-article">
+                        <h2>约翰·沃特斯的荒诞美学</h2>
+                        <p>《粉红色火烈鸟》不仅是约翰·沃特斯执导的电影中争议最大的一部，也是美国地下电影文化的里程碑。影片讲述了一群生活在巴尔的摩的边缘人，通过一系列离奇、暴力且令人不安的行为来维持生存和尊严的故事。</p>
+                        <div class="highlight-box">
+                            “这部电影是对美国梦最赤裸的讽刺。”—— 影评人评价
+                        </div>
+                        <p>影片的核心人物包括自称为“上帝”的赛斯·格林、拥有变形欲望的卡拉·霍华德以及为了生存不择手段的波利·帕克。沃特斯利用极端的视觉语言，将“恶心”作为一种审美手段，探讨了贫穷、欲望以及人性在极端环境下的扭曲。</p>
+                        <p>尽管电影充满了色情露骨的镜头和血腥暴力的场面，但其内核却包含了对社会阶层和消费主义的深刻批判。它并非为了单纯的感官刺激，而是通过夸张的荒诞感，迫使观众直面人性中不愿承认的阴暗面。</p>
+                    </article>
+
+                    <aside>
+                        <div class="card">
+                            <h3>电影档案</h3>
+                            <ul class="list-item">
+                                <li><strong>上映年份：</strong>1972年</li>
+                                <li><strong>导演：</strong>约翰·沃特斯</li>
+                                <li><strong>主演：</strong>戴安·兰迪斯, 肯尼·布朗</li>
+                                <li><strong>类型：</strong>邪典 / 荒诞 / 剧情</li>
+                                <li><strong>片长：</strong>1小时39分钟</li>
+                            </ul>
+                        </div>
+
+                        <div class="card">
+                            <h3>经典台词</h3>
+                            <p style="font-style: italic; color: #555;">"I'm God!"<br>—— 赛斯·格林</p>
+                            <p style="font-style: italic; color: #555;">"Eat it, baby!"<br>—— 波利·帕克</p>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="gallery-section">
+            <div class="container">
+                <h2 class="section-title">剧照赏析</h2>
+                <div class="gallery-grid">
+                    <div class="poster-card">
+                        <img src="https://picsum.photos/seed/flamingo1/400/600" alt="粉红色火烈鸟剧照1">
+                        <div class="poster-overlay">
+                            <h4>赛斯·格林的登场</h4>
+                            <p>标志性的开场镜头，奠定了整部电影的荒诞基调。</p>
+                        </div>
+                    </div>
+                    <div class="poster-card">
+                        <img src="https://picsum.photos/seed/flamingo2/400/600" alt="粉红色火烈鸟剧照2">
+                        <div class="poster-overlay">
+                            <h4>卡拉的蜕变</h4>
+                            <p>主角卡拉在极端环境下的心理与生理变化。</p>
+                        </div>
+                    </div>
+                    <div class="poster-card">
+                        <img src="https://picsum.photos/seed/flamingo3/400/600" alt="粉红色火烈鸟剧照3">
+                        <div class="poster-overlay">
+                            <h4>波利与狗狗</h4>
+                            <p>展现人物之间扭曲而紧密的关系。</p>
+                        </div>
+                    </div>
+                    <div class="poster-card">
+                        <img src="https://picsum.photos/seed/flamingo4/400/600" alt="粉红色火烈鸟剧照4">
+                        <div class="poster-overlay">
+                            <h4>结尾的火烈鸟</h4>
+                            <p>片名出现的瞬间，象征着荒诞的终结与循环。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="faq-section">
+            <div class="container">
+                <h2 class="section-title">常见问题 (FAQ)</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4>这是一部恐怖片吗？</h4>
+                        <p>虽然包含暴力场面，但它更多被归类为“邪典电影”或“荒诞喜剧”，其恐怖感更多源于心理上的冲击而非惊吓元素。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>为什么这部电影如此出名？</h4>
+                        <p>因为它突破了当时社会道德的底线，其前卫的拍摄手法和大胆的表演风格使其成为电影史上最具争议的作品之一。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>在哪里可以观看？</h4>
+                        <p>这部电影属于公有领域或特定发行版权，建议通过正规的流媒体平台或影碟租赁服务观看。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4>沃特斯想表达什么？</h4>
+                        <p>沃特斯通过这些边缘人物试图解构主流价值观，展示在物质匮乏下人性的真实面貌。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Flamingo Movie Guide. All rights reserved.</p>
+            <p>本站内容仅供学术研究与艺术讨论，旨在回顾影史经典。</p>
+        </div>
+    </footer>
+
+</body>
+</html>
