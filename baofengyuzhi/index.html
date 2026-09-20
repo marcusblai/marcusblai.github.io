@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="暴风雨之夜专题页 - 提供气象预警信息、电影影视推荐、文学经典摘录及应急安全指南。探索自然气象的壮丽与危险，享受沉浸式视听体验。">
+    <meta name="keywords" content="暴风雨之夜,气象预警,电影推荐,文学经典,应急安全">
+    <title>暴风雨之夜-气象预警与沉浸式视听指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-dark: #0f172a;
+            --primary-blue: #1e293b;
+            --accent-cyan: #06b6d4;
+            --accent-purple: #8b5cf6;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--primary-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* 背景动画效果 */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 120%, #1e1b4b, #020617);
+            overflow: hidden;
+        }
+
+        .rain {
+            position: absolute;
+            top: -100%;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M10,0 L10,20" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></svg>');
+            animation: rain-fall 0.5s linear infinite;
+        }
+
+        @keyframes rain-fall {
+            to { transform: translateY(100vh); }
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 头部导航 */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--accent-cyan), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .cta-btn {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .cta-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Hero 区域 */
+        .hero {
+            padding: 6rem 0 4rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            color: var(--accent-cyan);
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        /* 通用 Section */
+        section {
+            padding: 4rem 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            border-left: 4px solid var(--accent-cyan);
+            padding-left: 1rem;
+        }
+
+        .section-link {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-link::after {
+            content: '→';
+            margin-left: 0.5rem;
+            transition: transform 0.2s;
+        }
+
+        .section-link:hover::after {
+            transform: translateX(5px);
+        }
+
+        /* 气象预警卡片 */
+        .alert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .alert-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .alert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: var(--accent-cyan);
+        }
+
+        .alert-level {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .level-red { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+        .level-orange { background: rgba(249, 115, 22, 0.2); color: #f97316; }
+        .level-blue { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
+
+        .alert-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .alert-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .alert-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 1rem;
+        }
+
+        /* 影视推荐 */
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .media-card {
+            background: var(--primary-blue);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .media-card:hover {
+            transform: scale(1.03);
+        }
+
+        .poster-placeholder {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(45deg, #334155, #1e293b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .poster-placeholder::after {
+            content: '🎬';
+            font-size: 4rem;
+            opacity: 0.5;
+        }
+
+        .media-info {
+            padding: 1rem;
+        }
+
+        .media-info h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .media-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            font-size: 0.7rem;
+            padding: 0.1rem 0.4rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            color: var(--text-muted);
+        }
+
+        /* 安全指南 */
+        .guide-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .guide-list {
+            list-style: none;
+        }
+
+        .guide-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .guide-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(6, 182, 212, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-cyan);
+            flex-shrink: 0;
+        }
+
+        .guide-content h4 {
+            margin-bottom: 0.25rem;
+            font-size: 1.1rem;
+        }
+
+        .guide-content p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .guide-visual {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .checklist {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .check-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .check-item::before {
+            content: '✓';
+            color: var(--accent-cyan);
+            font-weight: bold;
+        }
+
+        /* 文学摘录 */
+        .quote-section {
+            background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), url('https://picsum.photos/seed/storm/1200/400') center/cover;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        blockquote {
+            font-size: 1.5rem;
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #e2e8f0;
+            line-height: 1.8;
+        }
+
+        blockquote footer {
+            margin-top: 1.5rem;
+            font-size: 1rem;
+            color: var(--accent-cyan);
+        }
+
+        /* FAQ */
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 0;
+        }
+
+        .faq-question {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .faq-answer {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '-';
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 页脚 */
+        footer {
+            background: #020617;
+            padding: 4rem 0 2rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 4rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h5 {
+            color: var(--text-main);
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .copyright {
+            text-align: center;
+            color: #475569;
+            font-size: 0.85rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-wrapper { flex-direction: column; gap: 1rem; }
+            nav ul { gap: 1rem; font-size: 0.9rem; }
+            .guide-wrapper { grid-template-columns: 1fr; }
+            .hero-stats { flex-direction: column; gap: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-animation">
+        <div class="rain"></div>
+    </div>
+
+    <header>
+        <div class="container nav-wrapper">
+            <div class="logo">StormGuide</div>
+            <nav>
+                <ul>
+                    <li><a href="#alerts">气象预警</a></li>
+                    <li><a href="#movies">影视推荐</a></li>
+                    <li><a href="#safety">安全指南</a></li>
+                    <li><a href="#literature">文学摘录</a></li>
+                </ul>
+            </nav>
+            <a href="#safety" class="cta-btn">查看避险指南</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>暴风雨之夜<br>探索自然的狂野与静谧</h1>
+                <p>从气象预警到经典影视，从安全指南到文学灵感，全方位解析“暴风雨之夜”的多重面貌。</p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>24h</h3>
+                        <p>实时监测</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>500+</h3>
+                        <p>影视作品</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>100%</h3>
+                        <p>安全建议</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 气象预警 Section -->
+        <section id="alerts">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">实时气象预警</h2>
+                    <a href="#" class="section-link">查看完整地图</a>
+                </div>
+                <div class="alert-grid">
+                    <article class="alert-card">
+                        <span class="alert-level level-red">红色预警</span>
+                        <h3>特大暴雨警报</h3>
+                        <p>部分地区预计未来3小时降雨量将达100毫米以上，请注意防范城市内涝和山洪灾害。</p>
+                        <div class="alert-meta">
+                            <span>发布机构：气象局</span>
+                            <span>10分钟前</span>
+                        </div>
+                    </article>
+                    <article class="alert-card">
+                        <span class="alert-level level-orange">橙色预警</span>
+                        <h3>大风黄色预警</h3>
+                        <p>阵风可达8-9级，请停止露天活动和高空等户外危险作业，妥善安置易受大风影响的室外物品。</p>
+                        <div class="alert-meta">
+                            <span>发布机构：气象局</span>
+                            <span>35分钟前</span>
+                        </div>
+                    </article>
+                    <article class="alert-card">
+                        <span class="alert-level level-blue">蓝色预警</span>
+                        <h3>雷电活动预警</h3>
+                        <p>预计未来6小时内，将出现雷电活动，局地伴有短时强降水和雷雨大风。</p>
+                        <div class="alert-meta">
+                            <span>发布机构：气象局</span>
+                            <span>1小时前</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 影视推荐 Section -->
+        <section id="movies">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">影视推荐</h2>
+                    <a href="#" class="section-link">浏览片单</a>
+                </div>
+                <div class="media-grid">
+                    <article class="media-card">
+                        <div class="poster-placeholder"></div>
+                        <div class="media-info">
+                            <h4>暴风雨之夜</h4>
+                            <div class="media-tags">
+                                <span class="tag">悬疑</span>
+                                <span class="tag">惊悚</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="media-card">
+                        <div class="poster-placeholder"></div>
+                        <div class="media-info">
+                            <h4>后天</h4>
+                            <div class="media-tags">
+                                <span class="tag">灾难</span>
+                                <span class="tag">科幻</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="media-card">
+                        <div class="poster-placeholder"></div>
+                        <div class="media-info">
+                            <h4>卡萨布兰卡</h4>
+                            <div class="media-tags">
+                                <span class="tag">爱情</span>
+                                <span class="tag">经典</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="media-card">
+                        <div class="poster-placeholder"></div>
+                        <div class="media-info">
+                            <h4>海神号</h4>
+                            <div class="media-tags">
+                                <span class="tag">动作</span>
+                                <span class="tag">灾难</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 安全指南 Section -->
+        <section id="safety">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">应急安全指南</h2>
+                    <a href="#" class="section-link">下载手册</a>
+                </div>
+                <div class="guide-wrapper">
+                    <div class="guide-content">
+                        <ul class="guide-list">
+                            <li class="guide-item">
+                                <div class="guide-icon">⚡</div>
+                                <div>
+                                    <h4>电力安全</h4>
+                                    <p>暴风雨期间，请避免在树下、电线杆或广告牌附近停留，远离积水区域以防触电。</p>
+                                </div>
+                            </li>
+                            <li class="guide-item">
+                                <div class="guide-icon">🏠</div>
+                                <div>
+                                    <h4>居家防护</h4>
+                                    <p>检查门窗密封性，疏通排水口，准备手电筒、收音机和应急药品。</p>
+                                </div>
+                            </li>
+                            <li class="guide-item">
+                                <div class="guide-icon">🚗</div>
+                                <div>
+                                    <h4>行车建议</h4>
+                                    <p>如遇积水，切勿强行通过。若车辆被困，应立即弃车向高处转移。</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="guide-visual">
+                        <h4>家庭应急物资清单</h4>
+                        <div class="checklist">
+                            <div class="check-item">饮用水 (3天量)</div>
+                            <div class="check-item">手电筒 & 电池</div>
+                            <div class="check-item">急救包</div>
+                            <div class="check-item">收音机</div>
+                            <div class="check-item">简易干粮</div>
+                            <div class="check-item">充电宝</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 文学摘录 Section -->
+        <section class="quote-section" id="literature">
+            <div class="container">
+                <blockquote>
+                    “暴风雨之夜，是上帝用来考验人类的时刻。”
+                    <footer>— 摘自《暴风雨之夜》相关文学评论</footer>
+                </blockquote>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">常见问题</h2>
+                </div>
+                <div class="faq-grid">
+                    <div class="faq-item active">
+                        <div class="faq-question">暴风雨之夜出行有什么注意事项？</div>
+                        <div class="faq-answer">建议减少不必要的外出，如必须出行，请避开低洼地带，远离广告牌和电线。驾驶车辆应降低车速，保持安全车距。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">如何判断雷雨天气的严重程度？</div>
+                        <div class="faq-answer">关注气象部门发布的预警信号。红色预警表示最高级别的灾害风险，橙色、黄色、蓝色预警等级依次递减。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">暴风雨天气适合拍摄什么样的视频？</div>
+                        <div class="faq-answer">适合拍摄延时摄影、航拍云层变化以及室内氛围感画面。注意保护拍摄设备防水。</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">StormGuide</div>
+                    <p style="color: var(--text-muted); margin-top: 1rem; font-size: 0.9rem;">
+                        致力于为您提供最全面的暴风雨相关信息、安全建议与娱乐内容。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h5>气象服务</h5>
+                    <ul>
+                        <li><a href="#">实时雷达</a></li>
+                        <li><a href="#">历史数据</a></li>
+                        <li><a href="#">预警查询</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>娱乐内容</h5>
+                    <ul>
+                        <li><a href="#">高分电影</a></li>
+                        <li><a href="#">音乐推荐</a></li>
+                        <li><a href="#">小说摘录</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>关于我们</h5>
+                    <ul>
+                        <li><a href="#">服务条款</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">联系合作</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 StormGuide. All Rights Reserved. 暴风雨之夜专题页.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ 交互逻辑
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', event => {
+                const parent = item.parentNode;
+                
+                // 关闭其他打开的项
+                document.querySelectorAll('.faq-item').forEach(child => {
+                    if (child !== parent) child.classList.remove('active');
+                });
+
+                // 切换当前项
+                parent.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+  </html>
