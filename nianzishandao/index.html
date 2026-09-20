@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>碾子山到齐齐哈尔 - 实时交通指南与出行服务</title>
+    <meta name="description" content="提供碾子山到齐齐哈尔的实时班车时刻表、票价查询、交通路线规划及出行注意事项，为您的一日往返及城际通勤提供详尽参考。">
+    <meta name="keywords" content="碾子山到齐齐哈尔, 碾子山到齐齐哈尔班车, 碾子山到齐齐哈尔高铁, 碾子山到齐齐哈尔公交, 碾子山到齐齐哈尔路线">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #d32f2f; /* 交通红 */
+            --secondary-color: #f5f5f5;
+            --text-dark: #333333;
+            --text-gray: #666666;
+            --text-light: #999999;
+            --border-color: #e0e0e0;
+            --spacing-unit: 16px;
+            --container-width: 1200px;
+            --radius: 8px;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--primary-color);
+        }
+
+        /* 顶部导航 */
+        header {
+            background-color: #fff;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        /* Hero 区域 */
+        .hero {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            color: #2c3e50;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+
+        /* 搜索框 */
+        .search-box {
+            background: #fff;
+            padding: 20px;
+            border-radius: var(--radius);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .input-group {
+            flex: 1;
+            min-width: 200px;
+            position: relative;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .input-group input:focus {
+            border-color: var(--primary-color);
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background-color: #b71c1c;
+        }
+
+        /* 主要内容区 */
+        main {
+            flex: 1;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 40px var(--spacing-unit);
+            width: 100%;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* 交通方式卡片 */
+        .transport-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+            border-color: rgba(211, 47, 47, 0.1);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background-color: #ffebee;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            color: var(--primary-color);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+
+        .info-list {
+            list-style: none;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        .info-list li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .info-list li::before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        /* 时间表样式 */
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .schedule-table th, .schedule-table td {
+            padding: 16px 24px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .schedule-table th {
+            background-color: #fafafa;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .schedule-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .schedule-table tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .tag-high-speed {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .tag-bus {
+            background-color: #e3f2fd;
+            color: #1565c0;
+        }
+
+        /* 路线详情 */
+        .route-detail {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .map-placeholder {
+            background-color: #e0e0e0;
+            height: 300px;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .route-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .step {
+            display: flex;
+            gap: 16px;
+        }
+
+        .step-number {
+            background-color: var(--primary-color);
+            color: #fff;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            margin-bottom: 4px;
+        }
+
+        .step-content p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* 提示区域 */
+        .tips-section {
+            background-color: #fff3e0;
+            border-radius: var(--radius);
+            padding: 24px;
+            margin-top: 40px;
+            border-left: 4px solid #ff9800;
+        }
+
+        .tips-section h3 {
+            margin-bottom: 12px;
+            color: #e65100;
+        }
+
+        .tips-section ul {
+            list-style-position: inside;
+            color: #555;
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: #333;
+            color: #ccc;
+            padding: 40px 0;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 8px;
+        }
+
+        .footer-col a:hover {
+            color: #fff;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .nav-links {
+                display: none; /* 移动端简化 */
+            }
+
+            .route-detail {
+                grid-template-columns: 1fr;
+            }
+
+            .search-box {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="nav-container">
+        <div class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+            城际出行通
+        </div>
+        <nav class="nav-links">
+            <a href="#" class="active">首页</a>
+            <a href="#">班次查询</a>
+            <a href="#">票价信息</a>
+            <a href="#">路线指南</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>碾子山到齐齐哈尔</h1>
+        <p>为您提供最便捷的碾子山至齐齐哈尔城际出行方案，包括高铁、客运班车及自驾路线规划。</p>
+        
+        <div class="search-box">
+            <div class="input-group">
+                <input type="text" placeholder="出发地：碾子山" value="碾子山">
+            </div>
+            <div class="input-group">
+                <input type="text" placeholder="目的地：齐齐哈尔" value="齐齐哈尔">
+            </div>
+            <button class="btn btn-primary">查询班次</button>
+        </div>
+    </div>
+</section>
+
+<main>
+    <!-- 交通方式概览 -->
+    <section class="section-title">
+        <span>常用交通方式</span>
+    </section>
+    <div class="transport-grid">
+        <article class="card">
+            <div class="card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>
+            </div>
+            <h3>高铁/动车</h3>
+            <p>最快的高效出行选择，途经龙江站，车程约20-30分钟，班次密集。</p>
+            <ul class="info-list">
+                <li>运行时间：约 25 分钟</li>
+                <li>票价：二等座 约 15 元</li>
+                <li>发车站点：碾子山站</li>
+            </ul>
+        </article>
+
+        <article class="card">
+            <div class="card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <h3>城际客运班车</h3>
+            <p>直达齐齐哈尔火车站或客运站，适合携带行李较多或对高铁时间不敏感的旅客。</p>
+            <ul class="info-list">
+                <li>运行时间：约 40 - 50 分钟</li>
+                <li>票价：约 25 - 30 元</li>
+                <li>途经路线：G111国道</li>
+            </ul>
+        </article>
+
+        <article class="card">
+            <div class="card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <h3>自驾/包车</h3>
+            <p>自由灵活，适合多人出行或夜间抵达。全程高速为主，路况良好。</p>
+            <ul class="info-list">
+                <li>里程：约 70 公里</li>
+                <li>耗时：约 1 小时 10 分钟</li>
+                <li>费用：过路费 + 油费</li>
+            </ul>
+        </article>
+    </div>
+
+    <!-- 高铁时刻表 -->
+    <section class="section-title">
+        <span>近期高铁时刻参考</span>
+        <a href="#" style="font-size: 0.9rem; color: var(--primary-color);">查看完整时刻表 &rarr;</a>
+    </section>
+    <table class="schedule-table">
+        <thead>
+            <tr>
+                <th>车次</th>
+                <th>出发站</th>
+                <th>到达站</th>
+                <th>出发时间</th>
+                <th>到达时间</th>
+                <th>历时</th>
+                <th>类型</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>G3602</td>
+                <td>碾子山</td>
+                <td>齐齐哈尔</td>
+                <td>06:35</td>
+                <td>07:00</td>
+                <td>25分</td>
+                <td><span class="tag tag-high-speed">高铁</span></td>
+            </tr>
+            <tr>
+                <td>G3604</td>
+                <td>碾子山</td>
+                <td>齐齐哈尔</td>
+                <td>07:20</td>
+                <td>07:45</td>
+                <td>25分</td>
+                <td><span class="tag tag-high-speed">高铁</span></td>
+            </tr>
+            <tr>
+                <td>G3606</td>
+                <td>碾子山</td>
+                <td>齐齐哈尔</td>
+                <td>08:05</td>
+                <td>08:30</td>
+                <td>25分</td>
+                <td><span class="tag tag-high-speed">高铁</span></td>
+            </tr>
+            <tr>
+                <td>G3610</td>
+                <td>碾子山</td>
+                <td>齐齐哈尔</td>
+                <td>09:35</td>
+                <td>10:00</td>
+                <td>25分</td>
+                <td><span class="tag tag-high-speed">高铁</span></td>
+            </tr>
+            <tr>
+                <td>G3612</td>
+                <td>碾子山</td>
+                <td>齐齐哈尔</td>
+                <td>10:20</td>
+                <td>10:45</td>
+                <td>25分</td>
+                <td><span class="tag tag-high-speed">高铁</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- 路线与自驾指南 -->
+    <section class="section-title">
+        <span>详细路线与自驾指南</span>
+    </section>
+    <div class="route-detail">
+        <div class="map-placeholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>地图导航区域</span>
+        </div>
+        <div class="route-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>起点：碾子山站/城区</h4>
+                    <p>从碾子山城区出发，沿中华西路向南行驶，进入G111国道。</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>途经：扎龙自然保护区周边</h4>
+                    <p>沿G111国道行驶约50公里，途径扎龙湿地边缘路段，路况平坦，限速较高。</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>终点：齐齐哈尔市区</h4>
+                    <p>进入建华区后，根据导航提示驶入齐齐哈尔火车站或指定目的地，全程约70公里。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 出行提示 -->
+    <section class="tips-section">
+        <h3>💡 出行温馨提示</h3>
+        <ul>
+            <li><strong>天气影响：</strong> 冬季（11月-次年3月）碾子山地区可能有大雪，建议提前关注路况，高速可能临时封闭，建议乘坐高铁或客运班车。</li>
+            <li><strong>购票建议：</strong> 节假日及周末高铁票较为紧张，建议提前在铁路12306官网或APP购票。</li>
+            <li><strong>客运班车：</strong> 碾子山客运站发车班次较多，但建议提前致电确认发车时间，以免耽误行程。</li>
+            <li><strong>自驾停车：</strong> 齐齐哈尔市区停车资源紧张，前往火车站建议使用公共交通或网约车接驳。</li>
+        </ul>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-col">
+            <h4>城际出行通</h4>
+            <p>专注提供黑龙江地区城际交通信息服务，致力于让每一次出行更加简单、便捷。</p>
+        </div>
+        <div class="footer-col">
+            <h4>快捷链接</h4>
+            <ul>
+                <li><a href="#">高铁时刻查询</a></li>
+                <li><a href="#">客运站公告</a></li>
+                <li><a href="#">路况实时监控</a></li>
+                <li><a href="#">常见问题</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>联系方式</h4>
+            <ul>
+                <li>客服热线：400-123-4567</li>
+                <li>工作时间：08:00 - 18:00</li>
+                <li>电子邮箱：support@citytransit.com</li>
+            </ul>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>&copy; 2023 城际出行通 版权所有 | 本站信息仅供参考，具体以实际运营部门公布为准</p>
+    </div>
+</footer>
+
+</body>
+                                          </html>
