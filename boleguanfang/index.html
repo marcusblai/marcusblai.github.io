@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="啵乐官方网站提供正版漫画阅读、高清番剧更新及二次元社区互动服务。包含最新热门作品推荐、分类浏览、月票打赏及创作者扶持计划。">
+    <meta name="keywords" content="啵乐官方网站,正版漫画,二次元社区,动漫推荐,漫画阅读">
+    <title>啵乐官方网站-正版漫画阅读与二次元社区</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #ff4757;
+            --primary-hover: #ff6b81;
+            --secondary-color: #2f3542;
+            --bg-color: #f1f2f6;
+            --card-bg: #ffffff;
+            --text-main: #2f3542;
+            --text-sub: #747d8c;
+            --spacing-unit: 8px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 40px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-left: 12px;
+            border-left: 4px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Header */
+        header {
+            background: var(--card-bg);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            height: 64px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-right: 40px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            margin-right: 4px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-menu a {
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--primary-color);
+        }
+
+        .header-actions {
+            margin-left: auto;
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 71, 87, 0.05);
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+            border: 1px solid var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-hover);
+            border-color: var(--primary-hover);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 24px;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            border-radius: 12px;
+            padding: 40px;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+        }
+
+        .hero h2 {
+            font-size: 32px;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 24px;
+        }
+
+        .hero-tags {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .tag {
+            background: rgba(255,255,255,0.25);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        /* Ranking List */
+        .ranking-section {
+            margin-top: 40px;
+        }
+
+        .ranking-tabs {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e1e1e1;
+            padding-bottom: 12px;
+        }
+
+        .rank-tab {
+            padding: 8px 16px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-sub);
+            border-radius: 4px;
+        }
+
+        .rank-tab.active {
+            background: #fff1f2;
+            color: var(--primary-color);
+        }
+
+        .rank-list {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+        }
+
+        .rank-item {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .rank-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+        }
+
+        .rank-cover {
+            width: 100%;
+            aspect-ratio: 2/3;
+            background: #eee;
+            position: relative;
+        }
+        
+        .rank-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .rank-number {
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            width: 20px;
+            height: 20px;
+            background: rgba(0,0,0,0.7);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .rank-info {
+            padding: 12px;
+        }
+
+        .rank-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .rank-meta {
+            font-size: 12px;
+            color: var(--text-sub);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .grid-col-left {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .grid-col-right {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            height: fit-content;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.2s;
+            display: block;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .card-img {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #eee;
+        }
+        
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 12px;
+        }
+
+        .card-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-desc {
+            font-size: 12px;
+            color: var(--text-sub);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Sidebar */
+        .sidebar-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            padding-left: 8px;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .sidebar-list li {
+            margin-bottom: 10px;
+            border-bottom: 1px dashed #eee;
+            padding-bottom: 10px;
+        }
+
+        .sidebar-list a {
+            font-size: 14px;
+            color: var(--text-main);
+        }
+
+        .sidebar-list a:hover {
+            color: var(--primary-color);
+        }
+
+        .hot-tag {
+            background: #ff4757;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 2px;
+            font-size: 10px;
+            margin-left: 6px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+            color: #dfe4ea;
+            margin-top: 60px;
+            padding: 40px 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer-info p {
+            margin-top: 12px;
+            font-size: 13px;
+            opacity: 0.7;
+        }
+
+        .footer-col h4 {
+            font-size: 14px;
+            margin-bottom: 16px;
+            color: #fff;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-col ul li a {
+            font-size: 13px;
+            opacity: 0.7;
+        }
+
+        .footer-col ul li a:hover {
+            opacity: 1;
+            color: #fff;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 12px;
+            opacity: 0.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            .grid-col-left {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .rank-list {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none; /* Simplified for mobile */
+            }
+            .header-actions {
+                display: none;
+            }
+            .grid-col-left {
+                grid-template-columns: 1fr;
+            }
+            .rank-list {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .hero h2 {
+                font-size: 24px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <span>❤</span> 啵乐
+            </a>
+            <nav class="nav-menu">
+                <a href="#" class="active">首页</a>
+                <a href="#">日韩漫画</a>
+                <a href="#">国产原创</a>
+                <a href="#">美漫日漫</a>
+                <a href="#">榜单</a>
+            </nav>
+            <div class="header-actions">
+                <button class="btn btn-outline">登录</button>
+                <button class="btn btn-primary">注册</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-tags">
+                    <span class="tag">每日更新</span>
+                    <span class="tag">高清无码</span>
+                    <span class="tag">独家首发</span>
+                </div>
+                <h2>探索无限想象的二次元世界<br>在啵乐发现你的下一个心头好</h2>
+                <p>汇聚全球优质漫画资源，提供极致流畅的阅读体验。无论是热血冒险、治愈日常还是悬疑推理，这里都有属于你的精彩。</p>
+                <div style="display: flex; gap: 12px;">
+                    <button class="btn btn-primary" style="background: #fff; color: var(--primary-color);">立即阅读</button>
+                    <button class="btn btn-outline" style="border-color: #fff; color: #fff;">浏览榜单</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ranking Section -->
+        <section class="ranking-section">
+            <div class="section-title">
+                <span>每日人气榜</span>
+                <a href="#" style="font-size: 14px; color: var(--text-sub);">查看更多 ></a>
+            </div>
+            <div class="ranking-tabs">
+                <div class="rank-tab active">综合榜</div>
+                <div class="rank-tab">月票榜</div>
+                <div class="rank-tab">追更榜</div>
+                <div class="rank-tab">新番榜</div>
+            </div>
+            <div class="rank-list">
+                <div class="rank-item">
+                    <div class="rank-cover">
+                        <span class="rank-number">1</span>
+                        <img src="https://picsum.photos/seed/comic1/200/300" alt="封面">
+                    </div>
+                    <div class="rank-info">
+                        <div class="rank-title">深渊主宰：重生归来</div>
+                        <div class="rank-meta">
+                            <span>玄幻</span>
+                            <span>12.5w人追读</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rank-item">
+                    <div class="rank-cover">
+                        <span class="rank-number">2</span>
+                        <img src="https://picsum.photos/seed/comic2/200/300" alt="封面">
+                    </div>
+                    <div class="rank-info">
+                        <div class="rank-title">星际穿越：最后的舰队</div>
+                        <div class="rank-meta">
+                            <span>科幻</span>
+                            <span>9.8w人追读</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rank-item">
+                    <div class="rank-cover">
+                        <span class="rank-number">3</span>
+                        <img src="https://picsum.photos/seed/comic3/200/300" alt="封面">
+                    </div>
+                    <div class="rank-info">
+                        <div class="rank-title">萌宠大作战：异世界</div>
+                        <div class="rank-meta">
+                            <span>搞笑</span>
+                            <span>8.2w人追读</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rank-item">
+                    <div class="rank-cover">
+                        <span class="rank-number">4</span>
+                        <img src="https://picsum.photos/seed/comic4/200/300" alt="封面">
+                    </div>
+                    <div class="rank-info">
+                        <div class="rank-title">赛博侦探：霓虹之下</div>
+                        <div class="rank-meta">
+                            <span>悬疑</span>
+                            <span>7.5w人追读</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="rank-item">
+                    <div class="rank-cover">
+                        <span class="rank-number">5</span>
+                        <img src="https://picsum.photos/seed/comic5/200/300" alt="封面">
+                    </div>
+                    <div class="rank-info">
+                        <div class="rank-title">古风：权倾天下</div>
+                        <div class="rank-meta">
+                            <span>古风</span>
+                            <span>6.9w人追读</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content Area -->
+        <div class="content-grid">
+            <!-- Left Column: Latest Updates -->
+            <div class="grid-col-left">
+                <div class="section-title">
+                    <span>最新更新</span>
+                    <a href="#" style="font-size: 14px; color: var(--text-sub);">更多 ></a>
+                </div>
+
+                <!-- Article 1 -->
+                <article class="card">
+                    <a href="#">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/art1/400/225" alt="漫画封面">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">奇幻森林的守林人：第108话 奇迹的种子</h3>
+                            <p class="card-desc">守林人意外发现了一颗散发着奇异光芒的种子，这颗种子似乎拥有改变森林生态的神奇力量...</p>
+                            <div style="margin-top: 8px; font-size: 12px; color: #ff4757;">
+                                <span>2小时前更新</span>
+                                <span style="margin-left: 10px;">[玄幻]</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="card">
+                    <a href="#">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/art2/400/225" alt="漫画封面">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">都市修仙：我在上海当房东：第56话 暴雨将至</h3>
+                            <p class="card-desc">房东的平静生活再次被打乱，暴雨中隐藏着巨大的危机，隐藏在暗处的敌人终于露出了獠牙...</p>
+                            <div style="margin-top: 8px; font-size: 12px; color: #ff4757;">
+                                <span>5小时前更新</span>
+                                <span style="margin-left: 10px;">[都市]</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="card">
+                    <a href="#">
+                        <div class="card-img">
+                            <img src="https://picsum.photos/seed/art3/400/225" alt="漫画封面">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">恋爱模拟器：我的青梅竹马：第23话 意外的告白</h3>
+                            <p class="card-desc">原本以为是普通的周末聚会，却因为一杯咖啡引发了意想不到的化学反应，两人的关系即将突破...</p>
+                            <div style="margin-top: 8px; font-size: 12px; color: #ff4757;">
+                                <span>8小时前更新</span>
+                                <span style="margin-left: 10px;">[恋爱]</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+            </div>
+
+            <!-- Right Column: Sidebar -->
+            <aside>
+                <!-- Categories -->
+                <div class="sidebar-section" style="margin-bottom: 24px;">
+                    <h3 class="sidebar-title">热门分类</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="#">🔥 热血冒险 <span class="hot-tag">HOT</span></a></li>
+                        <li><a href="#">💕 青春校园</a></li>
+                        <li><a href="#">👻 恐怖悬疑</a></li>
+                        <li><a href="#">🏰 古风历史</a></li>
+                        <li><a href="#">🤖 科幻未来</a></li>
+                        <li><a href="#">🐱 猫咪萌宠</a></li>
+                    </ul>
+                </div>
+
+                <!-- Recommended for You -->
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">为您推荐</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="#">全职法师：觉醒之路</a></li>
+                        <li><a href="#">异界药神：从炼丹开始</a></li>
+                        <li><a href="#">鬼灭之刃：无限列车篇</a></li>
+                        <li><a href="#">海贼王：和之国决战</a></li>
+                        <li><a href="#">咒术回战：宿傩降临</a></li>
+                    </ul>
+                </div>
+
+                <!-- Ad Placeholder -->
+                <div style="margin-top: 24px; background: #e1e1e1; height: 200px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #999; font-size: 14px;">
+                    广告位
+                </div>
+            </aside>
+        </div>
+
+        <!-- Features Section -->
+        <section style="margin-top: 60px; background: #fff; padding: 40px; border-radius: 12px;">
+            <div class="section-title">为什么选择啵乐</div>
+            <div class="flex" style="justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 250px; text-align: center; padding: 20px;">
+                    <div style="font-size: 40px; margin-bottom: 16px;">⚡</div>
+                    <h4 style="margin-bottom: 8px;">极速加载</h4>
+                    <p style="color: var(--text-sub); font-size: 14px;">智能云加速技术，确保漫画图片秒开，告别卡顿。</p>
+                </div>
+                <div style="flex: 1; min-width: 250px; text-align: center; padding: 20px;">
+                    <div style="font-size: 40px; margin-bottom: 16px;">💎</div>
+                    <h4 style="margin-bottom: 8px;">高清画质</h4>
+                    <p style="color: var(--text-sub); font-size: 14px;">支持4K超清画质，每一帧细节都清晰可见，沉浸式阅读体验。</p>
+                </div>
+                <div style="flex: 1; min-width: 250px; text-align: center; padding: 20px;">
+                    <div style="font-size: 40px; margin-bottom: 16px;">🔒</div>
+                    <h4 style="margin-bottom: 8px;">正版授权</h4>
+                    <p style="color: var(--text-sub); font-size: 14px;">严格审核版权内容，支持创作者，让创作更有价值。</p>
+                </div>
+                <div style="flex: 1; min-width: 250px; text-align: center; padding: 20px;">
+                    <div style="font-size: 40px; margin-bottom: 16px;">💬</div>
+                    <h4 style="margin-bottom: 8px;">社区互动</h4>
+                    <p style="color: var(--text-sub); font-size: 14px;">强大的评论与弹幕系统，与书友实时交流，分享阅读乐趣。</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <div class="logo" style="color: #fff; margin-bottom: 10px;">
+                        <span>❤</span> 啵乐
+                    </div>
+                    <p>啵乐致力于为全球二次元爱好者提供最优质的漫画阅读平台。我们汇聚了海量正版漫画资源，涵盖日漫、国漫、韩漫等多种风格。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#">公司简介</a></li>
+                        <li><a href="#">加入我们</a></li>
+                        <li><a href="#">联系方式</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>帮助中心</h4>
+                    <ul>
+                        <li><a href="#">常见问题</a></li>
+                        <li><a href="#">投稿指南</a></li>
+                        <li><a href="#">版权声明</a></li>
+                        <li><a href="#">意见反馈</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关注我们</h4>
+                    <ul>
+                        <li><a href="#">微信公众号</a></li>
+                        <li><a href="#">新浪微博</a></li>
+                        <li><a href="#">Bilibili</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 啵乐官方网站 版权所有. 本站内容仅供个人学习交流使用，请勿用于商业用途。
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
