@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一主板o1bz手机版 - 智能主板调试与系统优化工具</title>
+    <meta name="description" content="第一主板o1bz手机版是一款专为移动端设计的智能主板调试与系统优化工具。提供实时监控、故障诊断、参数配置及数据导出功能，帮助用户高效管理设备硬件状态，提升系统运行稳定性。">
+    <meta name="keywords" content="第一主板o1bz手机版,主板调试,硬件监控,系统优化,设备管理工具">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #00a8cc;
+            --bg-color: #f4f6f9;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-sub: #666666;
+            --border-color: #e1e4e8;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --spacing-unit: 1rem;
+            --container-width: 1200px;
+            --header-height: 70px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-top: var(--header-height);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .section {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            color: var(--text-main);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--card-bg);
+            height: var(--header-height);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-main);
+            font-size: 1rem;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .btn-download {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .btn-download:hover {
+            background-color: #004494;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #e3f2fd 0%, #ffffff 100%);
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-sub);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 168, 204, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary-color);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            border: 2px solid var(--primary-color);
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .feature-card p {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+        }
+
+        /* Dashboard Preview Section */
+        .dashboard-preview {
+            background-color: #1e293b;
+            color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+
+        .dashboard-header {
+            padding: 1rem 2rem;
+            background-color: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background-color: #ff5f56; }
+        .dot-yellow { background-color: #ffbd2e; }
+        .dot-green { background-color: #27c93f; }
+
+        .dashboard-body {
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-body {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .monitor-panel {
+            background: rgba(255,255,255,0.05);
+            padding: 1.5rem;
+            border-radius: 6px;
+        }
+
+        .monitor-title {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .stat-value {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+
+        .chart-placeholder {
+            height: 200px;
+            background: linear-gradient(180deg, rgba(0,168,204,0.2) 0%, rgba(0,168,204,0) 100%);
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            padding-bottom: 10px;
+        }
+
+        .bar {
+            width: 12%;
+            background-color: var(--secondary-color);
+            border-radius: 4px 4px 0 0;
+            opacity: 0.8;
+            animation: pulse 2s infinite;
+        }
+
+        .bar:nth-child(2) { height: 60%; animation-delay: 0.2s; }
+        .bar:nth-child(3) { height: 80%; animation-delay: 0.4s; }
+        .bar:nth-child(4) { height: 45%; animation-delay: 0.6s; }
+        .bar:nth-child(5) { height: 90%; animation-delay: 0.8s; }
+
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+
+        .log-panel {
+            background: rgba(0,0,0,0.2);
+            padding: 1rem;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            height: 200px;
+            overflow-y: auto;
+        }
+
+        .log-entry { margin-bottom: 0.5rem; color: #ccc; }
+        .log-entry.info { color: #64b5f6; }
+        .log-entry.warn { color: #ffb74d; }
+        .log-entry.success { color: #81c784; }
+
+        /* Specs List */
+        .specs-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .spec-item {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+
+        .spec-label {
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .spec-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* FAQ Section */
+        .faq-item {
+            background: var(--card-bg);
+            margin-bottom: 1rem;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+
+        .faq-question {
+            padding: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .faq-answer {
+            padding: 0 1.2rem 1.2rem;
+            color: var(--text-sub);
+            border-top: 1px solid var(--border-color);
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question {
+            color: var(--primary-color);
+        }
+
+        .icon-plus {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--border-color);
+            position: relative;
+            transition: background-color 0.3s;
+        }
+
+        .icon-plus::before, .icon-plus::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 12px;
+            height: 2px;
+            background-color: white;
+            transform: translate(-50%, -50%);
+        }
+
+        .icon-plus::after {
+            transform: translate(-50%, -50%) rotate(90deg);
+        }
+
+        .faq-item.active .icon-plus {
+            background-color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: #bdc3c7;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 1.8rem; }
+            .header-inner { flex-direction: column; gap: 1rem; }
+            nav ul { gap: 1rem; font-size: 0.9rem; }
+            .btn-download { width: 100%; text-align: center; }
+            .section-title { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-inner">
+        <div class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+            <span>第一主板o1bz</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#features" class="active">功能特点</a></li>
+                <li><a href="#dashboard">实时监控</a></li>
+                <li><a href="#specs">技术参数</a></li>
+                <li><a href="#faq">常见问题</a></li>
+            </ul>
+        </nav>
+        <a href="#" class="btn-download">立即下载手机版</a>
+    </div>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>专业级主板调试与系统优化工具</h1>
+            <p>第一主板o1bz手机版，随时随地掌握硬件状态。支持实时电压监测、风扇转速控制、日志导出及故障自检，是工程师与硬件发烧友的必备移动端助手。</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn-primary">下载 Android 版本</a>
+                <a href="#dashboard" class="btn-secondary">查看演示</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section">
+        <div class="container">
+            <h2 class="section-title">核心功能概览</h2>
+            <div class="features-grid">
+                <article class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>实时硬件监控</h3>
+                    <p>通过手机端实时查看 CPU 温度、核心频率、内存使用率及电压状态，数据延迟低至毫秒级。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon">⚙️</div>
+                    <h3>参数动态配置</h3>
+                    <p>支持在线调整风扇曲线、超频参数及安全阈值，无需连接电脑即可进行基础调试。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>历史数据记录</h3>
+                    <p>自动记录硬件运行日志，支持导出 CSV 格式报表，便于后期分析与性能追踪。</p>
+                </article>
+                <article class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>智能故障诊断</h3>
+                    <p>内置自检算法，快速识别硬件异常，提供简明的错误代码与解决建议。</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Preview Section -->
+    <section id="dashboard" class="section" style="background-color: #e9ecef;">
+        <div class="container">
+            <h2 class="section-title">移动端监控界面演示</h2>
+            <div class="dashboard-preview">
+                <div class="dashboard-header">
+                    <div class="dot dot-red"></div>
+                    <div class="dot dot-yellow"></div>
+                    <div class="dot dot-green"></div>
+                    <span style="font-size: 0.8rem; margin-left: 10px; color: #ccc;">Terminal: FirstBoard Monitor v1.0</span>
+                </div>
+                <div class="dashboard-body">
+                    <div class="monitor-panel">
+                        <div class="monitor-title">
+                            <span>CPU 核心性能监控</span>
+                            <span style="color: var(--success-color);">● 在线</span>
+                        </div>
+                        <div class="chart-placeholder">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                        </div>
+                        <div style="margin-top: 1rem;">
+                            <div class="stat-row">
+                                <span>当前频率</span>
+                                <span class="stat-value">3.2 GHz</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>温度</span>
+                                <span class="stat-value" style="color: var(--warning-color);">62°C</span>
+                            </div>
+                            <div class="stat-row">
+                                <span>功耗</span>
+                                <span class="stat-value">45 W</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="log-panel">
+                        <div class="log-entry info">[10:00:01] System initialized.</div>
+                        <div class="log-entry">[10:00:02] Connected to O1BZ interface.</div>
+                        <div class="log-entry success">[10:00:03] Temperature threshold OK.</div>
+                        <div class="log-entry warn">[10:01:15] Fan RPM adjustment detected.</div>
+                        <div class="log-entry info">[10:02:00] Data sync started.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specs Section -->
+    <section id="specs" class="section">
+        <div class="container">
+            <h2 class="section-title">技术参数与支持</h2>
+            <div class="specs-list">
+                <div class="spec-item">
+                    <div class="spec-label">兼容性</div>
+                    <div class="spec-value">Android 8.0+</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">连接协议</div>
+                    <div class="spec-value">TCP/IP / Localhost</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">支持芯片组</div>
+                    <div class="spec-value">Intel Z590, B560, H570 等</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">安全特性</div>
+                    <div class="spec-value">端到端加密传输</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">离线模式</div>
+                    <div class="spec-value">支持基础参数读取</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">语言支持</div>
+                    <div class="spec-value">简体中文 / English</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section">
+        <div class="container" style="max-width: 800px;">
+            <h2 class="section-title">常见问题 (FAQ)</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>第一主板o1bz手机版需要 root 权限吗？</span>
+                        <div class="icon-plus"></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>基础监控功能通常不需要 root 权限，但高级超频和电压调整功能可能需要设备具备相应的调试接口权限。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>如何连接手机与主板调试接口？</span>
+                        <div class="icon-plus"></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>请确保手机与主板处于同一局域网内，或使用 USB 数据线直连。软件支持自动发现局域网内的调试设备。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>数据传输安全吗？</span>
+                        <div class="icon-plus"></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>所有数据传输均采用加密协议，确保您的硬件配置参数和监控数据不会泄露。</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>支持哪些主板品牌？</span>
+                        <div class="icon-plus"></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>目前主要支持基于 Intel 和 AMD 最新芯片组的 O1BZ 标准主板，兼容市面上主流品牌的 B/Z/H 系列产品。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>第一主板o1bz</h4>
+                <p style="font-size: 0.9rem; line-height: 1.6;">
+                    致力于为用户提供最便捷、最专业的移动端硬件调试解决方案。让硬件管理触手可及。
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>快速链接</h4>
+                <ul>
+                    <li><a href="#features">功能介绍</a></li>
+                    <li><a href="#specs">技术文档</a></li>
+                    <li><a href="#">下载中心</a></li>
+                    <li><a href="#">社区论坛</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>支持</h4>
+                <ul>
+                    <li><a href="#faq">帮助中心</a></li>
+                    <li><a href="#">联系客服</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                    <li><a href="#">服务条款</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 第一主板o1bz 手机版. All rights reserved. 仅供技术交流与演示使用。</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // FAQ Toggle Logic
+    document.querySelectorAll('.faq-question').forEach(item => {
+        item.addEventListener('click', event => {
+            const parent = item.parentElement;
+            parent.classList.toggle('active');
+        });
+    });
+
+    // Smooth Scroll for Anchor Links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                const headerOffset = 80;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+            }
+        });
+    });
+
+    // Simulate Log Update
+    const logPanel = document.querySelector('.log-panel');
+    const logs = [
+        { type: 'info', msg: '[10:05:12] Heartbeat signal received.' },
+        { type: 'info', msg: '[10:05:13] Voltage regulation stable.' },
+        { type: 'warn', msg: '[10:06:00] Fan speed approaching max.' },
+        { type: 'success', msg: '[10:06:05] Temperature within safe range.' },
+        { type: 'info', msg: '[10:07:00] Syncing data to cloud...' }
+    ];
+
+    let logIndex = 0;
+    setInterval(() => {
+        if (logIndex < logs.length) {
+            const logEntry = document.createElement('div');
+            logEntry.className = `log-entry ${logs[logIndex].type}`;
+            logEntry.innerText = logs[logIndex].msg;
+            logPanel.appendChild(logEntry);
+            logPanel.scrollTop = logPanel.scrollHeight;
+            logIndex++;
+        }
+    }, 3000);
+</script>
+
+</body>
+                      </html>
